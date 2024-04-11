@@ -71,17 +71,11 @@ export default function Timer() {
 
     useEffect(() => {
         const interval = setInterval(() => {
-            const arr = timerSettings.displayCountIn;
-
             const timeRemaining = timerSettings.remainingTimePeriod * handlRemainingTimePeriod(timerSettings.timeIn);
             const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
             const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
-            // CHECK THE DISPLAY COUNT IN ARRAY AND SET THE TIME LEFT ACCORDINGLY 
-
-
-
 
             setTimeLeft({ days, hours, minutes, seconds });
         }, 1000);
