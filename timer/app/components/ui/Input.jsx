@@ -47,3 +47,6 @@ export const InputNumber = forwardRef((props, ref) => {
     )
 }
 )
+
+Input.displayName = 'Input';
+InputNumber.displayName = 'InputNumber';

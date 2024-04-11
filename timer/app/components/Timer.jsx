@@ -190,3 +190,5 @@ export default function Timer() {
         </>
     );
 }
+
+Timer.displayName = 'Timer';

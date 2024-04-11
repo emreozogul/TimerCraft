@@ -35,3 +35,5 @@ const Switch = ({ checked, onChange }) => {
 }
 
 export default Switch
+
+Switch.displayName = 'Switch'

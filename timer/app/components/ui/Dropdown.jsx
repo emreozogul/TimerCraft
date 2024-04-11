@@ -59,3 +59,5 @@ const Dropdown = forwardRef((props, ref) => {
 );
 
 export default Dropdown;
+
+Dropdown.displayName = 'Dropdown';

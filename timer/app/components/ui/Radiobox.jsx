@@ -25,3 +25,5 @@ const RadioboxGroup = ({ options, name, selected, onSelectionChange }) => {
 }
 
 export default RadioboxGroup;
+
+RadioboxGroup.displayName = 'RadioboxGroup';

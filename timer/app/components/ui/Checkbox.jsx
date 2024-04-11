@@ -40,6 +40,8 @@ const CheckboxGroup = ({ options, selected, onSelectionChange }) => {
 
 export default CheckboxGroup;
 
+CheckboxGroup.displayName = 'CheckboxGroup';
+
 
 
 const Checkbox = ({ label, onChange, isChecked }) => {
@@ -71,3 +73,5 @@ const Checkbox = ({ label, onChange, isChecked }) => {
         </div>
     );
 };
+
+Checkbox.displayName = 'Checkbox';
