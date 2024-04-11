@@ -71,11 +71,30 @@ export default function Timer() {
 
     useEffect(() => {
         const interval = setInterval(() => {
-            const timeRemaining = timerSettings.remainingTimePeriod * handlRemainingTimePeriod(timerSettings.timeIn);
-            const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+            let days = 0, hours = 0, minutes = 0, seconds = 0;
+            let totalTime = timerSettings.remainingTimePeriod * handlRemainingTimePeriod(timerSettings.timeIn);
+            timerSettings.displayCountIn.forEach((unit) => {
+                switch (unit) {
+                    case 'Days':
+                        days = Math.floor(totalTime / handlRemainingTimePeriod(unit));
+                        totalTime = totalTime % handlRemainingTimePeriod(unit);
+                        break;
+                    case 'Hours':
+                        hours = Math.floor(totalTime / handlRemainingTimePeriod(unit));
+                        totalTime = totalTime % handlRemainingTimePeriod(unit);
+                        break;
+                    case 'Minutes':
+                        minutes = Math.floor(totalTime / handlRemainingTimePeriod(unit));
+                        totalTime = totalTime % handlRemainingTimePeriod(unit);
+                        break;
+                    case 'Seconds':
+                        seconds = Math.floor(totalTime / handlRemainingTimePeriod(unit));
+                        totalTime = totalTime % handlRemainingTimePeriod(unit);
+                        break;
+                    default:
+                        break;
+                }
+            });
 
             setTimeLeft({ days, hours, minutes, seconds });
         }, 1000);
@@ -88,15 +107,15 @@ export default function Timer() {
 
         switch (unit) {
             case 'Days':
-                return 1000 * 60 * 60 * 24;
+                return 60 * 60 * 24;
             case 'Hours':
-                return 1000 * 60 * 60;
+                return 60 * 60;
             case 'Minutes':
-                return 1000 * 60;
+                return 60;
             case 'Seconds':
-                return 1000;
+                return 1;
             default:
-                return 1000;
+                return 1;
         }
     };
 
